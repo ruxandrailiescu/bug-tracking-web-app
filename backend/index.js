@@ -5,8 +5,11 @@ const swaggerUi = require('swagger-ui-express');
 const { initialize } = require('express-openapi');
 const initDB = require('./db/init');
 
+
+
 const app = express();
 app.use(express.json());
+
 
 initialize({
   app,
