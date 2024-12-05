@@ -1,7 +1,6 @@
 const sequelize = require('../db');
 
 const User = require('./User');
-const Team = require('./Team');
 const Project = require('./Project');
 const UserProject = require('./UserProject');
 const Bug = require('./Bug');
@@ -11,7 +10,6 @@ const BugHistory = require('./BugHistory');
 module.exports = {
     sequelize,
     User,
-    Team,
     Project,
     UserProject,
     Bug,

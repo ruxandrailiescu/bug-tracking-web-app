@@ -45,7 +45,7 @@ const Bug = sequelize.define('Bug', {
     },
   }, {
     tableName: 'Bugs',
-    timestamps: true,
+    timestamps: false,
   });
   
   module.exports = Bug;

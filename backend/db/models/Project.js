@@ -19,21 +19,13 @@ const Project = sequelize.define('Project', {
       type: DataTypes.ENUM('Active', 'Inactive'),
       allowNull: false,
     },
-    team_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Teams',
-        key: 'team_id',
-      },
-      allowNull: false,
-    },
     repository_url: {
       type: DataTypes.STRING,
       allowNull: true,
     },
   }, {
     tableName: 'Projects',
-    timestamps: true,
+    timestamps: false,
   });
   
   module.exports = Project;

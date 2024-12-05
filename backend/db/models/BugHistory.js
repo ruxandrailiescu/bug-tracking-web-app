@@ -25,7 +25,7 @@ const BugHistory = sequelize.define('BugHistory', {
     },
   }, {
     tableName: 'Bugs_History',
-    timestamps: true,
+    timestamps: false,
   });
   
   module.exports = BugHistory;

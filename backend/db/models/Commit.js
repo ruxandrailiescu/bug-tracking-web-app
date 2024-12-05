@@ -24,7 +24,7 @@ const Commit = sequelize.define('Commit', {
     },
   }, {
     tableName: 'Commits',
-    timestamps: true,
+    timestamps: false,
   });
   
   module.exports = Commit;

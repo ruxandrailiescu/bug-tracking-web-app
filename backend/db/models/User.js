@@ -20,21 +20,9 @@ const User = sequelize.define('User', {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    role: {
-      type: DataTypes.ENUM('MP', 'TST'),
-      allowNull: false,
-    },
-    team_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Teams',
-        key: 'team_id',
-      },
-      allowNull: true,
-    },
   }, {
     tableName: 'Users',
-    timestamps: true,
+    timestamps: false,
   });
   
   module.exports = User;

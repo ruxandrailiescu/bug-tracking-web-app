@@ -16,9 +16,13 @@ const UserProject = sequelize.define('UserProject', {
         key: 'project_id',
       },
     },
+    role: {
+      type: DataTypes.ENUM('MP', 'TST'),
+      allowNull: false,
+    },
   }, {
     tableName: 'Users_Projects',
-    timestamps: true,
+    timestamps: false,
   });
   
   module.exports = UserProject;

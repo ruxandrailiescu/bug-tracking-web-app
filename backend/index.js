@@ -1,18 +1,9 @@
 require('dotenv').config();
 
 const express = require('express');
-const swaggerUi = require("swagger-ui-express");
-const { initialize } = require("express-openapi");
-const { 
-    sequelize, 
-    User, 
-    Team, 
-    Project,
-    UserProject,
-    Bug,
-    Commit,
-    BugHistory
-} = require('./db/models');
+const swaggerUi = require('swagger-ui-express');
+const { initialize } = require('express-openapi');
+const initDB = require('./db/init');
 
 const app = express();
 app.use(express.json());
@@ -35,18 +26,14 @@ app.use(
 
 (async () => {
     try {
-      await sequelize.authenticate();
-      console.log('Database connection established successfully.');
-  
-      await sequelize.sync({ alter: true });
-      console.log('Models synchronized with the database.');
-  
-      const PORT = 3030;
+      await initDB();
+      const PORT = process.env.PORT || 3030;
       app.listen(PORT, () => {
         console.log(`Server is running on http://localhost:${PORT}`);
+        console.log(`API docs available at http://localhost:${PORT}/api-documentation`);
       });
     } catch (error) {
-      console.error('Error initializing the app:', error);
+      console.error('Error initializing the app: ', error);
       process.exit(1);
     }
   })();
@@ -61,5 +48,3 @@ app.use(
       process.exit(1);
     }
   });
-
-  module.exports = app;
