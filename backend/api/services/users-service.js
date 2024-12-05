@@ -1,6 +1,5 @@
 const User = require('../../db/models/User');
 
-// Get all users
 async function getAllUsers() {
   try {
     return await User.findAll();
@@ -9,7 +8,6 @@ async function getAllUsers() {
   }
 }
 
-// Get a user by ID
 async function getUserById(id) {
   try {
     return await User.findByPk(id);
@@ -18,7 +16,6 @@ async function getUserById(id) {
   }
 }
 
-// Create a new user
 async function createUser(userData) {
   try {
     return await User.create(userData);
@@ -27,7 +24,6 @@ async function createUser(userData) {
   }
 }
 
-// Update user details
 async function updateUser(id, userData) {
   try {
     const user = await User.findByPk(id);
@@ -39,14 +35,13 @@ async function updateUser(id, userData) {
   }
 }
 
-// Delete a user
 async function deleteUser(id) {
   try {
     const user = await User.findByPk(id);
     if (!user) return 0;
 
     await user.destroy();
-    return 1; // Indicating successful deletion
+    return 1; 
   } catch (error) {
     throw new Error(`Error deleting user with id: ${id}`);
   }

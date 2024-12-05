@@ -10,7 +10,6 @@ module.exports = function () {
     DELETE,
   };
 
-  // Route to get all user-project associations
   async function GET_All_UserProjects(req, res, next) {
     try {
       const userProjects = await getAllUserProjects();
@@ -20,7 +19,6 @@ module.exports = function () {
     }
   }
 
-  // Route to create a new user-project association
   async function POST(req, res, next) {
     try {
       const userProject = await createUserProject(req.body);
@@ -30,7 +28,6 @@ module.exports = function () {
     }
   }
 
-  // Route to get user-project associations by user ID
   async function GET_UserProjects_By_UserId(req, res, next) {
     try {
       const { userId } = req.params;
@@ -42,7 +39,6 @@ module.exports = function () {
     }
   }
 
-  // Route to get user-project associations by project ID
   async function GET_UserProjects_By_ProjectId(req, res, next) {
     try {
       const { projectId } = req.params;
@@ -54,7 +50,6 @@ module.exports = function () {
     }
   }
 
-  // Route to update user-project role
   async function PUT(req, res, next) {
     try {
       const { userId, projectId } = req.params;
@@ -67,7 +62,6 @@ module.exports = function () {
     }
   }
 
-  // Route to delete user-project association
   async function DELETE(req, res, next) {
     try {
       const { userId, projectId } = req.params;

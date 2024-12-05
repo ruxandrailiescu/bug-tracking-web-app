@@ -1,6 +1,5 @@
 const UserProject = require('../../db/models/UserProject');
 
-// Service to create a new user-project association
 async function createUserProject(data) {
   try {
     const userProject = await UserProject.create(data);
@@ -10,7 +9,6 @@ async function createUserProject(data) {
   }
 }
 
-// Service to get all user-project associations
 async function getAllUserProjects() {
   try {
     const userProjects = await UserProject.findAll();
@@ -20,7 +18,6 @@ async function getAllUserProjects() {
   }
 }
 
-// Service to get user-project association by user id
 async function getUserProjectsByUserId(userId) {
   try {
     const userProjects = await UserProject.findAll({
@@ -32,7 +29,6 @@ async function getUserProjectsByUserId(userId) {
   }
 }
 
-// Service to get user-project association by project id
 async function getUserProjectsByProjectId(projectId) {
   try {
     const userProjects = await UserProject.findAll({
@@ -44,7 +40,6 @@ async function getUserProjectsByProjectId(projectId) {
   }
 }
 
-// Service to update user-project role
 async function updateUserProjectRole(userId, projectId, role) {
   try {
     const userProject = await UserProject.update(
@@ -62,7 +57,6 @@ async function updateUserProjectRole(userId, projectId, role) {
   }
 }
 
-// Service to delete user-project association
 async function deleteUserProject(userId, projectId) {
   try {
     const result = await UserProject.destroy({
