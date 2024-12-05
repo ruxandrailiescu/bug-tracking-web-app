@@ -2,3 +2,4 @@
 
 ## DATABASE MODELLING
 - implement sequelize associations
+- add validation for services
