@@ -1,6 +1,8 @@
 require('dotenv').config();
 
 const express = require('express');
+const swaggerUi = require("swagger-ui-express");
+const { initialize } = require("express-openapi");
 const { 
     sequelize, 
     User, 
@@ -15,9 +17,21 @@ const {
 const app = express();
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Welcome to the Bug Tracking App!');
+initialize({
+  app,
+  apiDoc: require("./api/api-doc"),
+  paths: "./api/routes",
 });
+
+app.use(
+  "/api-documentation",
+  swaggerUi.serve,
+  swaggerUi.setup(null, {
+    swaggerOptions: {
+      url: "http://localhost:3030/api-docs",
+    },
+  })
+);
 
 (async () => {
     try {
@@ -27,7 +41,7 @@ app.get('/', (req, res) => {
       await sequelize.sync({ alter: true });
       console.log('Models synchronized with the database.');
   
-      const PORT = 3000;
+      const PORT = 3030;
       app.listen(PORT, () => {
         console.log(`Server is running on http://localhost:${PORT}`);
       });
@@ -47,3 +61,5 @@ app.get('/', (req, res) => {
       process.exit(1);
     }
   });
+
+  module.exports = app;
