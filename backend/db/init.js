@@ -6,7 +6,7 @@ async function initDB() {
     console.log('Database connection established successfully.');
 
     await sequelize.sync({ alter: true });
-    console.log('Models synchronized with the database.');
+    console.log('Database schema recreated.');
   } catch (error) {
     console.error('Error during database initialization:', error);
     throw error;
