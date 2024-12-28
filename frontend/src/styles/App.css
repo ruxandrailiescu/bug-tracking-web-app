@@ -1,0 +1,44 @@
+.container{
+    display: flex;
+    flex-direction: row;  /* Align items in a column */
+    gap: 10px;  /* Space between items */
+    width: 1000px; 
+    background-image: url('../images/7629074\ copy.jpg');
+    background-size: cover; /* Ensure the image fits inside the container */
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-shadow: 0 25px 50px 15px rgba(0, 0, 0, 0.7);
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+    align-items: center;
+}
+
+body{
+    background-image: url('../images/7629074.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.welcome{
+    margin-top: 150px;
+    margin-left: 40px;
+    font-size: 52px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+h2{
+    margin-left: 40px;
+    font-size: 17px;
+    color: white;
+    font-weight:70;
+}
+.title{
+    margin-top: 0;
+    padding-top: 0;
+    margin-left: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
