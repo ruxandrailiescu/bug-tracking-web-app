@@ -1,0 +1,135 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+/* Style for the section containing the form */
+section {
+    background-color: rgba(204, 204, 204, 0.4);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    min-width: 300px;
+    text-align: center;
+    min-height: 250px; /* Set a minimum height to ensure space for notes */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden; /* Ensure that nothing overflows out of the section */
+    transition: all 0.3s ease-in-out; /* Smooth transition for resizing */
+    box-shadow: 0 5px 15px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Apply a flex layout to the form for vertical stacking */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Tight gap between form elements */
+    flex-grow: 1;
+    position: relative; /* Important for adjusting relative positioning of elements */
+}
+
+/* Style for the labels */
+label {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: white;
+    margin-bottom: 4px;
+    padding-left: 10px;
+}
+
+/* Style for input fields */
+input[type="text"],
+input[type="password"] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 100%;
+    font-size: 16px;
+    background-color: rgba(204, 204, 204, 0.4);
+    color: white;
+}
+
+/* Style for the submit button */
+button {
+
+    padding: 10px;
+    border: none;
+    background-color: #264176;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:disabled {
+    background-color: #8395A9;
+    cursor: not-allowed;
+    
+}
+
+/* Styles for valid/invalid icons */
+.valid, .invalid {
+    color: green;
+    margin-left: 5px;
+}
+
+.invalid {
+    color: red;
+}
+
+/* Instructions for input fields */
+.instructions {
+    font-size: 0.8em;
+    color: white;
+    margin-top: 5px;
+    transform: translateY(-20px); /* Start off-screen */
+    opacity: 0; /* Initially hidden */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Slide and fade-in effect */
+}
+
+/* For showing the instructions */
+.instructions.show {
+    transform: translateY(0); /* Move into view */
+    opacity: 1; /* Fade-in */
+}
+
+/* For error messages */
+.errmsg {
+    color: red;
+    font-size: 0.9em;
+}
+
+.offscreen {
+    display: none;
+}
+
+
+#shadow-host-companion {
+    display: none;
+}
+
+.offscreen{
+    display: none;
+}
+
+.hide{
+    display: none;
+}
+
+h1{
+    color: white;
+    font-style: bold;
+}
+
+.note{
+    color: white;
+}
+
