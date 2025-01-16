@@ -67,6 +67,21 @@ router.get("/projects", authenticate, async (req, res) => {
   }
 });
 
+router.get("/projects/all", authenticate, async (req, res) => {
+  try {
+    const projects = await Project.find({}).populate(
+      "team.userId",
+      "email displayName"
+    );
+    res.status(200).json(projects);
+  } catch (err) {
+    console.error("Error fetching the projects: ", err);
+    res
+      .status(500)
+      .json({ message: "An error occurred while fetching the projects." });
+  }
+});
+
 router.post("/projects/:projectId/testers", authenticate, async (req, res) => {
   const { projectId } = req.params;
   const userId = req.user.id;
