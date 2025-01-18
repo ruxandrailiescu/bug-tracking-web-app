@@ -46,7 +46,7 @@ router.post("/users/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
     const token = generateToken({ id: user._id, role: user.role });
-    res.json({ token });
+    res.json({ token, userId: user._id });
   } catch (err) {
     console.error("Error finding the user: ", err);
     return res.status(500).json({ message: "An error occurred during login" });
