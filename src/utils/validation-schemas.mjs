@@ -37,6 +37,14 @@ export const createProjectValidationSchema = {
       errorMessage: "Repository URL cannot be empty",
     },
   },
+  projectName: {
+    notEmpty: {
+      errorMessage: "Project name cannot be empty",
+    },
+    isString: {
+      errorMessage: "Project name must be a string",
+    },
+  },
 };
 
 export const createBugValidationSchema = {

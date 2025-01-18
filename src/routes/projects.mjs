@@ -22,9 +22,10 @@ router.post(
     const result = validationResult(req);
     if (!result.isEmpty())
       return res.status(400).json({ errors: result.array() });
-    const { repositoryUrl } = req.body;
+    const { repositoryUrl, projectName } = req.body;
     const userId = req.user.id;
     const newProject = new Project({
+      projectName,
       repositoryUrl,
       team: [{ userId }],
     });
@@ -55,6 +56,7 @@ router.get("/projects", authenticate, async (req, res) => {
     if (!user) return res.status(404).json({ message: "User not found" });
     const projects = user.projects.map((project) => ({
       projectId: project.projectId._id,
+      projectName: project.projectId.projectName,
       repositoryUrl: project.projectId.repositoryUrl,
       role: project.role,
     }));
@@ -119,17 +121,18 @@ router.patch(
   async (req, res) => {
     const { projectId } = req.params;
     const errors = validationResult(req);
-    const { repositoryUrl, team, bugs } = req.body;
-    if (!repositoryUrl && !team && !bugs)
+    const { projectName, repositoryUrl, team, bugs } = req.body;
+    if (!projectName && !repositoryUrl && !team && !bugs)
       return res.status(400).json({ message: "No fields provided to update" });
     try {
       const updateFields = {};
       const currentProject = await Project.findById(projectId);
-      if (repositoryUrl) {
+      if (repositoryUrl && projectName) {
         if (!errors.isEmpty()) {
           return res.status(400).json({ errors: errors.array() });
         }
         updateFields.repositoryUrl = repositoryUrl;
+        updateFields.projectName = projectName;
       }
       if (team) {
         if (!Array.isArray(team))

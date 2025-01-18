@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const ProjectSchema = new mongoose.Schema({
+  projectName: {
+    type: mongoose.Schema.Types.String,
+    required: true,
+  },
   repositoryUrl: {
     type: mongoose.Schema.Types.String,
     required: true,
